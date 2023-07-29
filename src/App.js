@@ -17,6 +17,7 @@ function App() {
       <Route path="/playlists" element={<Playlists />} />
       <Route path="/watchlater" element={<WatchLater />} />
       <Route path="/categories/:category" element={<VideoListing />} />
+      <Route path="/videos/:videoId" element={<h1>This is a video</h1>} />
      </Routes>
     </div>
   );
