@@ -1,6 +1,6 @@
 import styles from "./playlists.module.css";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { VideoContext } from "../../context/VideoContext";
 import { SideBar } from "../../components/sideBar/SideBar";
@@ -13,6 +13,8 @@ export const Playlists=()=>
     const {state,dispatch}=useContext(VideoContext);
     const {playlists,showModal}=state;
 
+    useEffect(()=>dispatch({type:"GET_ALL_PLAYLISTS"}),[]);
+
     return (
         <>
         {showModal && <PlaylistModal />}
@@ -23,8 +25,8 @@ export const Playlists=()=>
                 <button className={styles.button} onClick={()=>dispatch({type:"TOGGLE_MODAL",payload:true})}>Add new Playlist</button>
 
                 <ul className={styles[`videos-container`]}>
-                    {playlists?.map(video=>(
-                        <PlaylistCard video={video} key={video._id}/>
+                    {playlists?.map((item,index)=>(
+                        <PlaylistCard playlist={item} key={item.name} index={index}/>
                     ))}
                 </ul>
             </main>  

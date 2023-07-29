@@ -9,7 +9,7 @@ export const VideoProvider=({children})=>
 {
     const VideoReducer=(state,{type,payload,inputField})=>
     {
-        const clearInput={name:""};
+        const clearInput={name:"",description:""};
         switch(type)
         {
             case "SEARCH":
@@ -29,10 +29,21 @@ export const VideoProvider=({children})=>
                 return {...state,showModal:payload};    
                 
             case "ADD":
-                return {...state,playlists:[...state.playlists,state.input],input:clearInput,showModal:false};  
+                const newPlaylist=[...state.playlists,state.input];
+                JSON.stringify(localStorage.setItem("playlists",newPlaylist));
+
+                return {...state,playlists:newPlaylist,input:clearInput,showModal:false};  
                 
             case "CLEAR_INPUT":
                 return {...state,input:clearInput,showModal:false};     
+            
+            case "DELETE_PLAYLIST":
+                return { ...state, playlists: payload };  
+
+            case "GET_ALL_PLAYLISTS":
+                const allPlaylists = JSON.parse(localStorage.getItem("playlists"));
+                return { ...state, playlists: allPlaylists || [] };
+
               
             default:
                 return state;    
@@ -44,14 +55,14 @@ export const VideoProvider=({children})=>
         allVideos:videos,
         search:"",
         watchLaterVideos:[],
-        input:{name:"",description:""},
         showModal:false,
         playlists:[],
+        input:{name:"",description:""},
     }
 
 
     const [state,dispatch]=useReducer(VideoReducer,initialState);
-    const {watchLaterVideos}=state;
+    const {watchLaterVideos, playlists}=state;
 
     const watchLaterCheck=(id)=> watchLaterVideos?.find(({_id})=>_id==id);
 
@@ -70,14 +81,17 @@ export const VideoProvider=({children})=>
         localStorage.setItem("watchlist",JSON.stringify(updatedWatchList));
     }
 
-    const addToPlaylist=()=>
+    const deletePlaylist=(playlistName)=>
     {
+        const updatedPlaylist=playlists.filter(({name})=>name!==playlistName);
 
+        dispatch({type:"DELETE_PLAYLIST",payload:updatedPlaylist});
+        JSON.stringify(localStorage.setItem("playlists",updatedPlaylist));
     }
 
 
     return (
-        <VideoContext.Provider value={{state, dispatch, watchLaterCheck, addToWatchLater, removeFromWatchLater}}>
+        <VideoContext.Provider value={{state, dispatch, watchLaterCheck, addToWatchLater, removeFromWatchLater, deletePlaylist}}>
             {children}
         </VideoContext.Provider>
     )

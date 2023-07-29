@@ -10,7 +10,9 @@ import { VideoContext } from "../../context/VideoContext";
 export const PlaylistModal=()=>
 {
     const {state,dispatch}=useContext(VideoContext);
-    const {input:{name,description}}=state;
+    const { input = { name: "", description: "" } } = state;
+    const { name, description } = input;
+
     return (
         <div className={styles.modal}>
             <div className={styles[`modal-container`]}>
