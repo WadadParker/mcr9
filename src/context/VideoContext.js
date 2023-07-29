@@ -7,8 +7,9 @@ export const VideoContext=createContext();
 
 export const VideoProvider=({children})=>
 {
-    const VideoReducer=(state,{type,payload})=>
+    const VideoReducer=(state,{type,payload,inputField})=>
     {
+        const clearInput={name:""};
         switch(type)
         {
             case "SEARCH":
@@ -20,6 +21,18 @@ export const VideoProvider=({children})=>
 
             case "ADD_TO_WATCH_LATER":
                 return {...state,watchLaterVideos:payload};    
+
+            case "INPUT_FIELDS":
+                return {...state,input:{...state.input,[inputField]:payload}};
+                
+            case "TOGGLE_MODAL":
+                return {...state,showModal:payload};    
+                
+            case "ADD":
+                return {...state,playlists:[...state.playlists,state.input],input:clearInput,showModal:false};  
+                
+            case "CLEAR_INPUT":
+                return {...state,input:clearInput,showModal:false};     
               
             default:
                 return state;    
@@ -31,6 +44,9 @@ export const VideoProvider=({children})=>
         allVideos:videos,
         search:"",
         watchLaterVideos:[],
+        input:{name:"",description:""},
+        showModal:false,
+        playlists:[],
     }
 
 
@@ -52,6 +68,10 @@ export const VideoProvider=({children})=>
         const updatedWatchList=watchLaterVideos.filter(({_id})=>_id!==videoId);
         dispatch({type:"ADD_TO_WATCH_LATER",payload:updatedWatchList});
         localStorage.setItem("watchlist",JSON.stringify(updatedWatchList));
+    }
+
+    const addToPlaylist=()=>
+    {
 
     }
 

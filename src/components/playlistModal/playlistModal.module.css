@@ -1,0 +1,51 @@
+.modal {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(192, 188, 188, 0.5);
+    display: flex;
+    place-content: center;
+}
+.modal-container {
+    z-index: 12;
+    width: 30vw;
+    height: fit-content;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 3px 3px #bcbbbb;
+    margin-top: 10rem;
+    background-color: white;
+    display: grid;
+}
+.icon {
+    display: block;
+    justify-self: end;
+    font-size: 1.3rem;
+}
+.icon:hover {
+    color: rgb(241, 68, 68);
+    cursor: pointer;
+}
+.button {
+    display: block;
+    color: white;
+    background-color: rgb(47, 144, 248);
+    border: 1px solid rgb(47, 144, 248);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+.button:hover {
+    color: rgb(47, 144, 248);
+    background-color: white;
+    cursor: pointer;
+}
+.main {
+    margin-bottom: 1rem;
+    display: grid;
+    row-gap: 0.5rem;
+}
+.description {
+    min-height: 3rem;
+}
