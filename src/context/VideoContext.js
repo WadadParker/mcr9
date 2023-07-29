@@ -30,7 +30,7 @@ export const VideoProvider=({children})=>
                 
             case "ADD":
                 const newPlaylist=[...state.playlists,state.input];
-                JSON.stringify(localStorage.setItem("playlists",newPlaylist));
+                (localStorage.setItem("playlists",JSON.stringify(newPlaylist)));
 
                 return {...state,playlists:newPlaylist,input:clearInput,showModal:false};  
                 
@@ -44,6 +44,8 @@ export const VideoProvider=({children})=>
                 const allPlaylists = JSON.parse(localStorage.getItem("playlists"));
                 return { ...state, playlists: allPlaylists || [] };
 
+            case "UPDATE_PLAYLIST":
+                return {...state,playlists:payload};    
               
             default:
                 return state;    
@@ -57,7 +59,7 @@ export const VideoProvider=({children})=>
         watchLaterVideos:[],
         showModal:false,
         playlists:[],
-        input:{name:"",description:""},
+        input:{name:"",description:"",videos:[]},
     }
 
 
@@ -86,12 +88,42 @@ export const VideoProvider=({children})=>
         const updatedPlaylist=playlists.filter(({name})=>name!==playlistName);
 
         dispatch({type:"DELETE_PLAYLIST",payload:updatedPlaylist});
-        JSON.stringify(localStorage.setItem("playlists",updatedPlaylist));
+        (localStorage.setItem("playlists",JSON.stringify(updatedPlaylist)));
+    }
+
+    const addToPlaylist=(video,playlistName)=>
+    {
+        const updatedPlaylist=playlists.map((item)=>
+        {
+            if(item.name==playlistName)
+            {
+                return {...item,videos:[...item.videos,video]}
+            }
+            return item;
+        })
+        dispatch({type:"UPDATE_PLAYLIST",payload:updatedPlaylist});
+        localStorage.setItem("playlists",JSON.stringify(updatedPlaylist));
+
+    }
+
+    const removeFromPlaylist=(video,playlistName)=>
+    {
+        const updatedPlaylist=playlists.map((item)=>
+        {
+            if(item.name==playlistName)
+            {
+                const updatedVideoList=item.videos.filter(({_id})=>_id!==video._id);
+                return {...item,videos:updatedVideoList}
+            }
+            return item;
+        })
+        dispatch({type:"UPDATE_PLAYLIST",payload:updatedPlaylist});
+        localStorage.setItem("playlists",JSON.stringify(updatedPlaylist));
     }
 
 
     return (
-        <VideoContext.Provider value={{state, dispatch, watchLaterCheck, addToWatchLater, removeFromWatchLater, deletePlaylist}}>
+        <VideoContext.Provider value={{state, dispatch, watchLaterCheck, addToWatchLater, removeFromWatchLater, deletePlaylist, addToPlaylist, removeFromPlaylist}}>
             {children}
         </VideoContext.Provider>
     )

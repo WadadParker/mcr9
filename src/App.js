@@ -8,6 +8,7 @@ import { Playlists } from './pages/playlists/Playlists';
 import { WatchLater } from './pages/watchLater/WatchLater';
 import { VideoListing } from './pages/videoListing/VideoListing';
 import { Video } from './pages/singleVideo/Video';
+import { SinglePlaylist } from './pages/singlePlaylist/SinglePlaylist';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/watchlater" element={<WatchLater />} />
       <Route path="/categories/:category" element={<VideoListing />} />
       <Route path="/videos/:videoId" element={<Video />} />
+      <Route path="/playlists/:playlistName" element={<SinglePlaylist />} />
      </Routes>
     </div>
   );
