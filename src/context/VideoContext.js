@@ -11,8 +11,8 @@ export const VideoProvider=({children})=>
     {
         switch(type)
         {
-            case "":
-                return {...state};
+            case "SEARCH":
+                return {...state,search:payload};
               
             default:
                 return state;    
@@ -22,6 +22,7 @@ export const VideoProvider=({children})=>
     const initialState={
         categories:categories,
         allVideos:videos,
+        search:"",
     }
 
 
@@ -33,7 +34,7 @@ export const VideoProvider=({children})=>
     }
 
     return (
-        <VideoContext.Provider value={{state, watchLaterCheck}}>
+        <VideoContext.Provider value={{state, dispatch,  watchLaterCheck}}>
             {children}
         </VideoContext.Provider>
     )

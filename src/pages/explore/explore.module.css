@@ -1,0 +1,34 @@
+.page-container {
+    display: flex;
+}
+.main {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: start;
+    align-items: start;
+    margin-top: 0;
+    width: 85vw;
+}
+.videos-container {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    align-items: start;
+}
+.seachbar {
+    width: 90%;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid gainsboro;
+    border-radius: 1rem;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    justify-self: center;
+    align-self: start;
+}
+.seachbar::placeholder {
+    color: rgb(174, 173, 173);
+}
