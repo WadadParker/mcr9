@@ -1,7 +1,7 @@
 import styles from "./video.module.css";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock as solidClock , faBars, faFilePen} from "@fortawesome/free-solid-svg-icons";
@@ -12,12 +12,15 @@ import { SideBar } from "../../components/sideBar/SideBar";
 
 export const Video=()=>
 {
-    const {state, watchLaterCheck}=useContext(VideoContext);
+    const {state, dispatch,watchLaterCheck, addToWatchLater, removeFromWatchLater}=useContext(VideoContext);
     const {allVideos}=state;
     const {videoId}=useParams();
     const navigate=useNavigate();
 
     const foundVideo=allVideos.find(({_id})=>_id==videoId);
+
+    useEffect(()=>dispatch({type:"GET_WATCH_LATER_VIDEOS"}),[]);
+
     return (
         <div className={styles[`page-container`]}>
             <SideBar />  
@@ -35,9 +38,9 @@ export const Video=()=>
                     <img className={styles.pfp} src="https://wallpapercave.com/wp/wp10197902.jpg" alt="profile" width={50} height={50} />
                     <strong>{foundVideo?.title}</strong>
                     <div className={styles[`icons-container`]}>
-                        {watchLaterCheck()
-                        ?<FontAwesomeIcon icon={regularClock} className={styles.icon} />
-                        :<FontAwesomeIcon icon={solidClock} className={styles.icon}/>}
+                        {watchLaterCheck(foundVideo?._id)
+                        ?<FontAwesomeIcon icon={solidClock} className={styles.icon} onClick={()=>removeFromWatchLater(foundVideo?._id)}/>
+                        :<FontAwesomeIcon icon={regularClock} className={styles.icon} onClick={()=>addToWatchLater(foundVideo)} />}
                         <FontAwesomeIcon icon={faBars} className={styles.icon}/>
                         <FontAwesomeIcon icon={faFilePen} className={styles.icon} />
 
