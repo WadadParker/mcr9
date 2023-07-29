@@ -1,0 +1,11 @@
+.page-container {
+    display: flex;
+}
+.main {
+    text-align: left;
+}
+.videos-container {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
