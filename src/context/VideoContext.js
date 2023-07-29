@@ -28,7 +28,7 @@ export const VideoProvider=({children})=>
     const [state,dispatch]=useReducer(VideoReducer,initialState);
 
     return (
-        <VideoContext.Provider>
+        <VideoContext.Provider value={{state}}>
             {children}
         </VideoContext.Provider>
     )
