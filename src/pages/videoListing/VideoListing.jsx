@@ -1,6 +1,6 @@
 import styles from "./videoListing.module.css";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useContext } from "react";
 
 import { VideoContext } from "../../context/VideoContext";

@@ -1,18 +1,17 @@
 import styles from "./videoCard.module.css";
+import {useContext} from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock as solidClock } from "@fortawesome/free-solid-svg-icons";
 import { faClock as regularClock } from "@fortawesome/free-regular-svg-icons";
 
+import { VideoContext } from "../../context/VideoContext";
+
 export const VideoCard=({video})=>
 {
     const navigate=useNavigate();
-
-    const watchLaterCheck=()=>
-    {
-        return true;
-    }
+    const {watchLaterCheck}=useContext(VideoContext);
 
     return (
         <div className={styles[`video-card-container`]}>

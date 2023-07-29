@@ -27,8 +27,13 @@ export const VideoProvider=({children})=>
 
     const [state,dispatch]=useReducer(VideoReducer,initialState);
 
+    const watchLaterCheck=()=>
+    {
+        return true;
+    }
+
     return (
-        <VideoContext.Provider value={{state}}>
+        <VideoContext.Provider value={{state, watchLaterCheck}}>
             {children}
         </VideoContext.Provider>
     )
