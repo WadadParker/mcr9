@@ -1,0 +1,31 @@
+.sidebar-container {
+    height: 90vh;
+    width: 20vw;
+    padding-left: 5vw;
+}
+
+.nav {
+    display: grid;
+    margin-top: 10vh;
+    place-items: center start;
+    row-gap: 1rem;
+}
+
+.link-container{
+    color: black;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.link-container:hover {
+    color:rgb(63, 138, 242) ;
+}
+.link {
+    padding: 0 1rem;
+}
+.active-link-container {
+    color: rgb(54, 134, 247);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+}
