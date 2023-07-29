@@ -17,7 +17,7 @@ export const VideoCard=({video})=>
 
     return (
         <div className={styles[`video-card-container`]}>
-            <img className={styles.thumbnail} src={video?.thumbnail} alt="thumbnail" width={300} height={150} />
+            <img className={styles.thumbnail} src={video?.thumbnail} alt="thumbnail" width={300} height={150} onClick={()=>navigate(`/videos/${video._id}`)}/>
             {watchLaterCheck(video?._id)
             ?<FontAwesomeIcon icon={solidClock} className={styles.icon} onClick={()=>removeFromWatchLater(video?._id)}/>
             :<FontAwesomeIcon icon={regularClock} className={styles.icon} onClick={()=>addToWatchLater(video)} /> }

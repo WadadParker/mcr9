@@ -1,0 +1,23 @@
+.page-container {
+    display: flex;
+}
+.main {
+    text-align: left;
+}
+.videos-container {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.video-list-container {
+    display: grid;
+}
+.icon {
+    display: block;
+    justify-self: start;
+    font-size: 1.3rem;
+}
+.icon:hover {
+    color: rgb(241, 68, 68);
+    cursor: pointer;
+}

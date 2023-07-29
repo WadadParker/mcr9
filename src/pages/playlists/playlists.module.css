@@ -1,0 +1,24 @@
+.page-container {
+    display: flex;
+}
+.main {
+    text-align: left;
+}
+.videos-container {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.button {
+    display: block;
+    color: white;
+    background-color: rgb(47, 144, 248);
+    border: 1px solid rgb(47, 144, 248);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+.button:hover {
+    color: rgb(47, 144, 248);
+    background-color: white;
+    cursor: pointer;
+}

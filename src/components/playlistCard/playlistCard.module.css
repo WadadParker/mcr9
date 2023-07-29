@@ -1,0 +1,20 @@
+.playlist-container {
+    display: grid;
+    max-width: 15rem;
+    margin: 1rem;
+}
+
+.icon {
+    display: block;
+    justify-self: end;
+    font-size: 1.3rem;
+}
+.icon:hover {
+    color: rgb(241, 68, 68);
+    cursor: pointer;
+}
+.pfp {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
