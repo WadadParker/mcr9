@@ -25,7 +25,7 @@ export const SinglePlaylist=()=>
                 <h1>{foundPlaylist?.name}</h1>
 
                 <ul className={styles[`videos-container`]}>
-                    {foundPlaylist.videos?.map(video=>(
+                    {foundPlaylist.videos.map(video=>(
                         <li key={video._id} className={styles[`video-list-container`]}>
                         <FontAwesomeIcon icon={faXmark} className={styles.icon} onClick={()=>removeFromPlaylist(video,foundPlaylist?.name)}/>
                         <VideoCard video={video} />

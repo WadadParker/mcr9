@@ -91,16 +91,9 @@ export const VideoProvider=({children})=>
         (localStorage.setItem("playlists",JSON.stringify(updatedPlaylist)));
     }
 
-    const addToPlaylist=(video,playlistName)=>
+    const addToPlaylist=(name,description,videos)=>
     {
-        const updatedPlaylist=playlists.map((item)=>
-        {
-            if(item.name==playlistName)
-            {
-                return {...item,videos:[...item.videos,video]}
-            }
-            return item;
-        })
+        const updatedPlaylist=[...playlists,{name,description,videos:[videos]}]
         dispatch({type:"UPDATE_PLAYLIST",payload:updatedPlaylist});
         localStorage.setItem("playlists",JSON.stringify(updatedPlaylist));
 

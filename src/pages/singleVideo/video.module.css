@@ -67,3 +67,52 @@
     cursor: pointer;
     filter: brightness(0.8);
 }
+.playlists-container {
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    display: grid;
+    padding: 0 1rem;
+}
+.button {
+    display: block;
+    color: white;
+    background-color: rgb(47, 144, 248);
+    border: 1px solid rgb(47, 144, 248);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+}
+.button:hover {
+    color: rgb(47, 144, 248);
+    background-color: white;
+    cursor: pointer;
+}
+.xicon {
+    display: block;
+    justify-self: end;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+}
+.xicon:hover, .delete-icon:hover {
+    color: rgb(241, 68, 68);
+    cursor: pointer;
+}
+.text {
+margin: 0.5rem 0;
+text-align: center;
+border: 0;
+}
+.text:focus {
+    outline: none;
+}
+.delete-playlists {
+    border-top: 1px solid black;
+}
+.delete-list-item {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
