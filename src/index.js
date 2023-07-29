@@ -6,11 +6,17 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
 
+import { VideoContext,VideoProvider } from './context/VideoContext';
+
+export {VideoContext};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <VideoProvider>
+        <App />
+      </VideoProvider>  
     </BrowserRouter>
   </React.StrictMode>
 );

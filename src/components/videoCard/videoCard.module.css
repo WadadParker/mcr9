@@ -1,0 +1,40 @@
+.video-card-container {
+    width: 18rem;
+    margin: 1rem;
+    display: grid;
+    grid-template-areas: 
+    "pfp"
+    "main";
+    row-gap: 0.5rem;
+}
+.thumbnail {
+    width: 100%;
+    object-fit: cover;
+    grid-area: pfp;
+}
+.main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.5rem;
+    justify-content: start;
+    justify-items: start;
+    grid-area: main;
+    cursor: pointer;
+}
+.pfp {
+    grid-row: 1 / span 3;
+    border-radius: 50%;
+}
+.icon {
+    grid-area: pfp;
+    background-color: white;
+    color:rgb(49, 140, 243);
+    padding: 0.5rem;
+    justify-self: end;
+    border: 1px solid white;
+    border-radius: 0  0 0 0.5rem  ;
+}
+.icon:hover {
+    color: rgb(33, 33, 236);
+    cursor: pointer;
+}
